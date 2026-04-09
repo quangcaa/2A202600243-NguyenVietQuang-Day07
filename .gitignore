@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+
+# Solution (students submit separately)
+solution/solution.py
+
+# IDE
+.vscode/
+.idea/
