@@ -19,12 +19,16 @@ from src.models import Document
 from src.store import EmbeddingStore
 
 SAMPLE_FILES = [
-    "data/python_intro.txt",
-    "data/vector_store_notes.md",
-    "data/rag_system_design.md",
-    "data/customer_support_playbook.txt",
-    "data/chunking_experiment_report.md",
-    "data/vi_retrieval_notes.md",
+    "data/01_quy_dinh_chung.md",
+    "data/02_ban_chi_dao_hoi_dong.md",
+    "data/03_diem_thi_phong_thi.md",
+    "data/04_doi_tuong_dieu_kien.md",
+    "data/05_trach_nhiem_thi_sinh.md",
+    "data/06_cong_tac_de_thi.md",
+    "data/07_in_sao_van_chuyen_de.md",
+    "data/08_coi_thi.md",
+    "data/09_cham_thi.md",
+    "data/10_phuc_khao_tot_nghiep.md",
 ]
 
 
@@ -56,15 +60,22 @@ def load_documents_from_files(file_paths: list[str]) -> list[Document]:
     return documents
 
 
+import openai
+
 def demo_llm(prompt: str) -> str:
     """A simple mock LLM for manual RAG testing."""
-    preview = prompt[:400].replace("\n", " ")
-    return f"[DEMO LLM] Generated answer from prompt preview: {preview}..."
+    client = openai.OpenAI()
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.0
+    )
+    return response.choices[0].message.content
 
 
 def run_manual_demo(question: str | None = None, sample_files: list[str] | None = None) -> int:
     files = sample_files or SAMPLE_FILES
-    query = question or "Summarize the key information from the loaded files."
+    query = question or "who are you"
 
     print("=== Manual File Test ===")
     print("Accepted file types: .md, .txt")

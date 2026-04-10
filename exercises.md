@@ -72,13 +72,18 @@ Ghi vào bảng:
 
 | # | Tên tài liệu | Nguồn | Số ký tự | Metadata đã gán |
 |---|--------------|-------|----------|-----------------|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1 | `01_quy_dinh_chung.md` | TT 15/2020 | 4,406 | `{"category": "quy_dinh_chung", "phase": "general"}` |
+| 2 | `02_ban_chi_dao_hoi_dong.md` | TT 15/2020 | 10,291 | `{"category": "to_chuc_thi", "phase": "preparation"}` |
+| 3 | `03_diem_thi_phong_thi.md` | TT 15/2020 | 6,404 | `{"category": "to_chuc_thi", "phase": "preparation"}` |
+| 4 | `04_doi_tuong_dieu_kien.md` | TT 15/2020 | 8,646 | `{"category": "dang_ky_thi", "phase": "registration"}` |
+| 5 | `05_trach_nhiem_thi_sinh.md` | TT 15/2020 | 8,409 | `{"category": "thi_sinh", "phase": "registration"}` |
+| 6 | `06_cong_tac_de_thi.md` | TT 15/2020 | 12,889 | `{"category": "de_thi", "phase": "preparation"}` |
+| 7 | `07_in_sao_van_chuyen_de.md`| TT 15/2020 | 6,409 | `{"category": "de_thi", "phase": "preparation"}` |
+| 8 | `08_coi_thi.md` | TT 15/2020 | 15,182 | `{"category": "coi_thi", "phase": "exam"}` |
+| 9 | `09_cham_thi.md` | TT 15/2020 | 29,970 | `{"category": "cham_thi", "phase": "grading"}` |
+| 10 | `10_phuc_khao_tot_nghiep.md`| TT 15/2020 | 52,945 | `{"category": "phuc_khao", "phase": "appeals"}` |
 
-**Step 3 — Thiết kế metadata schema:** Mỗi tài liệu cần ít nhất 2 trường metadata hữu ích (e.g., `category`, `date`, `source`, `language`, `difficulty`).
+**Step 3 — Thiết kế metadata schema:** Bảng metadata đã được điền ở trên gồm trường `category` (phân loại nhóm nội dung lớn), `phase` (giai đoạn của nội dung trong hệ thống), và các biến ẩn `source`, `language`.
 
 > **Ghi kết quả vào:** Report — Section 2 (Document Selection)
 
@@ -119,11 +124,11 @@ Mỗi nhóm viết **đúng 5 benchmark queries** kèm **gold answers**.
 
 | # | Query | Gold Answer (câu trả lời đúng) | Chunk nào chứa thông tin? |
 |---|-------|-------------------------------|--------------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| 1 | Thí sinh được phép mang những vật dụng gì vào phòng thi? | Gồm: Bút viết, thước kẻ, bút chì, tẩy chì, êke, thước vẽ đồ thị, dụng cụ vẽ hình, máy tính cầm tay (không soạn thảo/thẻ nhớ), Atlat Địa lý. | `05_trach_nhiem_thi_sinh.md` |
+| 2 | Việc sử dụng điện thoại và internet tại Điểm thi được quy định thế nào? (Filter: `category="to_chuc_thi"`) | Bố trí 01 điện thoại cố định ở phòng chung (bật loa ngoài, ghi nhật ký). Máy tính tại phòng trực chỉ nối mạng khi báo cáo nhanh. | `03_diem_thi_phong_thi.md` |
+| 3 | Điểm liệt trong xét công nhận tốt nghiệp THPT là bao nhiêu điểm? | Thí sinh bị điểm liệt nếu có bài thi/môn thi thành phần đạt từ 1,0 điểm trở xuống theo thang điểm 10. | `10_phuc_khao_tot_nghiep.md` |
+| 4 | Mỗi bài thi tự luận được chấm bao nhiêu vòng và do ai thực hiện? | Chấm hai vòng độc lập, thực hiện bởi hai Cán bộ chấm thi (CBChT) thuộc hai Tổ Chấm thi khác nhau. | `09_cham_thi.md` |
+| 5 | Thời hạn nhận đơn phúc khảo bài thi là bao nhiêu ngày kể từ ngày công bố điểm? | Trong thời hạn 10 ngày kể từ ngày công bố điểm thi. | `10_phuc_khao_tot_nghiep.md` |
 
 **Yêu cầu:**
 - Queries phải đa dạng (không hỏi 5 câu giống nhau)

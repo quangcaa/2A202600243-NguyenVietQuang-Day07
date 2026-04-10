@@ -1,0 +1,15 @@
+python -c "from dotenv import load_dotenv; load_dotenv(); from src import OpenAIEmbedder, compute_similarity; e=OpenAIEmbedder(); a='Con mèo dang an kem'; b='Con chó dang an kem'; print(f'Score: {compute_similarity(e(a), e(b)):.4f}')"
+
+python -c "
+from dotenv import load_dotenv; load_dotenv()
+from src import OpenAIEmbedder, compute_similarity
+e = OpenAIEmbedder()
+pairs = [
+    ('Con meo dang an kem', 'Con cho dang an kem'),
+    ('Python is a programming language', 'Java is a programming language'),
+    ('I love pizza', 'Quantum physics is hard'),
+]
+for i,(a,b) in enumerate(pairs,1):
+    s = compute_similarity(e(a), e(b))
+    print(f'Pair {i}: {s:.4f}  |  {a}  vs  {b}')
+"
