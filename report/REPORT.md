@@ -126,10 +126,10 @@ class LegalArticleChunker:
 
 | Thành viên | Strategy | Retrieval Score (/10) | Điểm mạnh | Điểm yếu |
 |-----------|----------|----------------------|-----------|----------|
-| Tôi | LegalArticleChunker (`legal_article`) | 7.5 / 10 | Giữ trọn vẹn ngữ cảnh theo từng Điều luật, phù hợp khi câu hỏi cần đầy đủ các Khoản và Điểm liên quan trong cùng một Điều. | Chunk quá dài, số lượng chunk ít nên embedding bị loãng; đã thể hiện rõ ở query về chấm thi khi hệ thống retrieve nhầm tài liệu. |
+| Tôi (Nguyễn Việt Quang) | LegalArticleChunker (`legal_article`) | 7.5 / 10 | Giữ trọn vẹn ngữ cảnh theo từng Điều luật, phù hợp khi câu hỏi cần đầy đủ các Khoản và Điểm liên quan trong cùng một Điều. | Chunk quá dài, số lượng chunk ít nên embedding bị loãng; đã thể hiện rõ ở query về chấm thi khi hệ thống retrieve nhầm tài liệu. |
 | Vũ Đức Minh | RecursiveChunker (chunk_size=800) | 8.5 | Tôn trọng cấu trúc markdown, giữ ngữ cảnh pháp lý, avg length consistent 636 ký tự | Chunk count cao (47 vs 40), có thể chậm hơn với tài liệu rất lớn |
 | Nguyễn Trọng Tiến | CustomChunker (legal-aware hybrid) | 8 | Overlap theo khoản, không cắt giữa điều luật | Nhiều chunk hơn RecursiveChunker |    
-| Tôi (Nguyễn Thị Ngọc) | SentenceChunker | 9/10 | Preserve context tốt, ít chunks | Chunk dài hơn, cost embedding cao |
+| Nguyễn Thị Ngọc | SentenceChunker | 9/10 | Preserve context tốt, ít chunks | Chunk dài hơn, cost embedding cao |
 
 **Strategy nào tốt nhất cho domain này? Tại sao?**
 > Trong phạm vi bộ tài liệu này, `RecursiveChunker` là strategy tốt nhất về mặt retrieval tổng thể vì nó giữ được cấu trúc tự nhiên của văn bản pháp lý nhưng vẫn tạo ra các chunk đủ nhỏ để embedding phân biệt tốt. `LegalArticleChunker` vẫn có giá trị khi cần bảo toàn toàn bộ bối cảnh của một Điều luật, nhưng nếu dùng đơn lẻ thì chunk quá lớn sẽ làm giảm độ chính xác. Vì vậy, hướng tốt nhất cho domain này là ưu tiên `RecursiveChunker`, hoặc kết hợp hybrid: cắt theo Điều trước rồi tiếp tục chia nhỏ các Điều quá dài.
